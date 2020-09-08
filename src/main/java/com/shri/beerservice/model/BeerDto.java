@@ -1,5 +1,6 @@
 package com.shri.beerservice.model;
 
+import com.shri.beerservice.model.enums.BeerStyleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,7 +35,7 @@ public class BeerDto implements Serializable {
     @NotBlank
     private String beerName;
     @NotNull
-    private String beerStyle;
+    private BeerStyleEnum beerStyle;
     @Positive
     @NotNull
     private Long utc;

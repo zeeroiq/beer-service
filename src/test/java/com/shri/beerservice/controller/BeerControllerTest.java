@@ -6,12 +6,14 @@ package com.shri.beerservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shri.beerservice.model.BeerDto;
+import com.shri.beerservice.model.enums.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -33,7 +35,7 @@ class BeerControllerTest {
 
     @Test
     void saveNewBeer() throws Exception {
-        BeerDto beerDto = BeerDto.builder().build();
+        BeerDto beerDto = BeerDto.builder().beerName("abc").beerStyle(BeerStyleEnum.ALE).utc(1232L).price(new BigDecimal("1234567")).build();
         String beerDtoToJson = objectMapper.writeValueAsString(beerDto);
 
         mockMvc.perform(post("/api/v1/beer").contentType(MediaType.APPLICATION_JSON).content(beerDtoToJson))
