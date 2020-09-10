@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -21,8 +22,8 @@ public class Beer {
 
     private UUID id;
     private Integer version;
-    private OffsetDateTime createdOn;
-    private OffsetDateTime lastModifiedOn;
+    private Timestamp createdOn;
+    private Timestamp lastModifiedOn;
     private String beerName;
     private BeerStyleEnum beerStyle;
     private Long utc;
