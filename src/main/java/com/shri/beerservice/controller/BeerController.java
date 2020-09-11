@@ -5,8 +5,11 @@
 package com.shri.beerservice.controller;
 
 import com.shri.beerservice.model.BeerDto;
+import com.shri.beerservice.service.BeerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,23 +18,23 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/beer")
+@RequiredArgsConstructor
 public class BeerController {
+
+    private final BeerService beerService;
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@NotNull @PathVariable("beerId") UUID beerId) {
-        // todo
-        return new ResponseEntity<>(BeerDto.builder().id(beerId).build(), HttpStatus.OK);
+        return new ResponseEntity<>(beerService.getById(beerId), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
-        // todo
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity(beerService.addBeer(beerDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@NotNull @PathVariable("beerId") UUID beerId) {
-        // todo
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    public ResponseEntity updateBeerById(@NotNull @PathVariable("beerId") UUID beerId, @Validated @RequestBody BeerDto beerDto) {
+        return new ResponseEntity(beerService.updateBeer(beerId, beerDto), HttpStatus.NO_CONTENT);
     }
 }
