@@ -1,5 +1,6 @@
 package com.shri.beerservice.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.shri.beerservice.model.enums.BeerStyleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,14 +30,17 @@ public class BeerDto implements Serializable {
     @Null
     private Integer version;
     @Null
+    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ss2", shape = JsonFormat.Shape.STRING)
     private OffsetDateTime createdOn;
     @Null
+    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ss2", shape = JsonFormat.Shape.STRING)
     private OffsetDateTime lastModifiedOn;
     @NotBlank
     private String beerName;
     @NotNull
     private BeerStyleEnum beerStyle;
     @Positive
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @NotNull
     private Long utc;
     @Positive
