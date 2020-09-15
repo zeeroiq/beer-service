@@ -55,6 +55,7 @@ public class InventoryServiceRestTemplateImpl implements InventoryService {
 
     @Bean
     RestTemplate getRestTemplate() {
-        return new RestTemplateBuilder().build();
+        RestTemplate restTemplate = new RestTemplateBuilder().build();
+        return restTemplate;
     }
 }
