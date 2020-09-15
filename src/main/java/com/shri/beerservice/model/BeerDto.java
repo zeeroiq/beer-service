@@ -22,7 +22,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class BeerDto implements Serializable {
 
-    private static final UUID uuid = UUID.randomUUID();
+    private static final long serialVersionUID = -4938686684894780807L;
 
 
     @Null

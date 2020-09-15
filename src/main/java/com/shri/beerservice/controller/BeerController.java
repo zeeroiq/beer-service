@@ -9,6 +9,7 @@ import com.shri.beerservice.model.BeerPagedList;
 import com.shri.beerservice.model.enums.BeerStyleEnum;
 import com.shri.beerservice.service.BeerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ public class BeerController {
     private final BeerService beerService;
 
 
+    @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand = false")
     @GetMapping(produces = {"application/json"})
     public ResponseEntity<BeerPagedList> listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
@@ -49,6 +51,7 @@ public class BeerController {
         return new ResponseEntity<>(beerList, HttpStatus.OK);
     }
 
+    @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand = false")
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@NotNull @PathVariable("beerId") UUID beerId,
                                                @RequestParam(value = "showInventoryOnHand", required = false) Boolean showInventoryOnHand) {
