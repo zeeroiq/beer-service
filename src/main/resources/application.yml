@@ -1,1 +1,6 @@
+server:
+  port: 8080
 
+com:
+  zeeroiq:
+    inventory-service-host: http://localhost:8081
