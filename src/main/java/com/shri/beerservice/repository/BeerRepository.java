@@ -5,6 +5,7 @@
 package com.shri.beerservice.repository;
 
 import com.shri.beerservice.domain.Beer;
+import com.shri.beerservice.model.BeerDto;
 import com.shri.beerservice.model.enums.BeerStyleEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,4 +21,5 @@ public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
 
     Page<Beer> findAllByBeerNameAndBeerStyle(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest);
 
+    BeerDto getBeerByUpc(String upc);
 }

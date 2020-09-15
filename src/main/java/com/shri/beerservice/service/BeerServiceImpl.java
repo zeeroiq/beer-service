@@ -91,4 +91,9 @@ public class BeerServiceImpl implements BeerService {
 
         return pagedList;
     }
+
+    @Override
+    public BeerDto getByUpc(String upc) {
+        return beerMapper.beerDtoToBeer(beerRepository.getBeerByUpc(upc));
+    }
 }
