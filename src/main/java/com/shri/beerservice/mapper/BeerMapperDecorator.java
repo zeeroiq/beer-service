@@ -8,7 +8,6 @@ import com.shri.beerservice.domain.Beer;
 import com.shri.beerservice.model.BeerDto;
 import com.shri.beerservice.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 
 public abstract class BeerMapperDecorator implements BeerMapper {
 
@@ -27,6 +26,12 @@ public abstract class BeerMapperDecorator implements BeerMapper {
 
     @Override
     public BeerDto beerToBeerDto(Beer beer) {
+        return beerMapper.beerToBeerDto(beer);
+    }
+
+
+    @Override
+    public BeerDto beerToBeerDtoWithInventory(Beer beer) {
         BeerDto beerDto = beerMapper.beerToBeerDto(beer);
         beerDto.setQuantityOnHand(inventoryService.getInventoryOnHand(beer.getId()));
         return beerDto;
@@ -36,5 +41,4 @@ public abstract class BeerMapperDecorator implements BeerMapper {
     public Beer beerDtoToBeer(BeerDto beerDto) {
         return beerMapper.beerDtoToBeer(beerDto);
     }
-
 }
