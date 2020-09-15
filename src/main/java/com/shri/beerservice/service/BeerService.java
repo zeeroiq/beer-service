@@ -12,9 +12,9 @@ import org.springframework.data.domain.PageRequest;
 import java.util.UUID;
 
 public interface BeerService {
-    BeerDto getById(UUID id);
+    BeerDto getById(UUID id, Boolean showInventoryOnHand);
     BeerDto addBeer(BeerDto beerDto);
     BeerDto updateBeer(UUID beerId, BeerDto beerDto);
 
-    BeerPagedList listBeers(String beerName, BeerStyleEnum styleEnum, PageRequest pageRequest);
+    BeerPagedList listBeers(String beerName, BeerStyleEnum styleEnum, PageRequest pageRequest, Boolean showInventoryOnHand);
 }
