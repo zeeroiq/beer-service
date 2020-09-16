@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 com:
   zeeroiq:
     inventory-service-host: http://localhost:8081
@@ -9,3 +8,8 @@ spring:
   cache:
     jcache:
       config: classpath:ehcache.xml
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MYSQL
+  h2:
+    console:
+      enabled: true
