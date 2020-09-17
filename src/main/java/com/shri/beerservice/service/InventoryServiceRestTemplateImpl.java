@@ -5,8 +5,8 @@
 package com.shri.beerservice.service;
 
 import com.shri.beerservice.model.InventoryDto;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -22,24 +22,27 @@ import java.util.UUID;
 
 @Slf4j
 @ConfigurationProperties(prefix = "com.zeeroiq", ignoreUnknownFields = false)
-@RequiredArgsConstructor
 @Service
 public class InventoryServiceRestTemplateImpl implements InventoryService {
 
     private final String INVENTORY_PATH = "/api/v1/beer/{beerid}/inventory";
     private final RestTemplate restTemplate;
 
-    private String inventoryServiceHostName;
+    private String inventoryServiceHost;
 
-    public void setInventoryServiceHostName(String inventoryServiceHostName) {
-        this.inventoryServiceHostName = inventoryServiceHostName;
+    public InventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
+        this.restTemplate = restTemplateBuilder.build();
+    }
+
+    public void setInventoryServiceHost(String inventoryServiceHost) {
+        this.inventoryServiceHost = inventoryServiceHost;
     }
 
     @Override
     public Integer getInventoryOnHand(UUID beerId) {
         log.info(">>>>> Calling inventory service");
 
-        ResponseEntity<List<InventoryDto>> responseEntity = restTemplate.exchange(inventoryServiceHostName + INVENTORY_PATH,
+        ResponseEntity<List<InventoryDto>> responseEntity = restTemplate.exchange(inventoryServiceHost + INVENTORY_PATH,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<InventoryDto>>() {
@@ -53,9 +56,9 @@ public class InventoryServiceRestTemplateImpl implements InventoryService {
         return onHand;
     }
 
-    @Bean
-    RestTemplate getRestTemplate() {
-        RestTemplate restTemplate = new RestTemplateBuilder().build();
-        return restTemplate;
-    }
+//    @Bean
+//    RestTemplate getRestTemplate() {
+//        RestTemplate restTemplate = new RestTemplateBuilder().build();
+//        return restTemplate;
+//    }
 }

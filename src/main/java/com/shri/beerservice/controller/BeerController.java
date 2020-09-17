@@ -8,7 +8,6 @@ import com.shri.beerservice.model.BeerDto;
 import com.shri.beerservice.model.BeerPagedList;
 import com.shri.beerservice.model.enums.BeerStyleEnum;
 import com.shri.beerservice.service.BeerService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -22,12 +21,15 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/")
-@RequiredArgsConstructor
 public class BeerController {
     private static final Integer DEFAULT_PAGE_NUMBER = 0;
     private static final Integer DEFAULT_PAGE_SIZE = 25;
 
     private final BeerService beerService;
+
+    public BeerController(BeerService beerService) {
+        this.beerService = beerService;
+    }
 
 
     @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand = false")
@@ -61,6 +63,7 @@ public class BeerController {
 
         return new ResponseEntity<>(beerService.getById(beerId, showInventoryOnHand), HttpStatus.OK);
     }
+
     @Cacheable(cacheNames = "beerUpcCache", key = "#upc")
     @GetMapping("beerUpc/{upc}")
     public ResponseEntity<BeerDto> getBeerByUpc(@NotNull @PathVariable("upc") String upc) {

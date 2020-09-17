@@ -8,7 +8,9 @@ import com.shri.beerservice.domain.Beer;
 import com.shri.beerservice.model.BeerDto;
 import com.shri.beerservice.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+//@Qualifier("delegate")
 public abstract class BeerMapperDecorator implements BeerMapper {
 
     private InventoryService inventoryService;

@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -28,7 +29,8 @@ public class Beer {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUDI", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(length = 40, columnDefinition = "varchar", updatable = false, nullable = false)
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(length = 40, columnDefinition = "varchar(40)", updatable = false, nullable = false)
     private UUID id;
     @Version
     private Integer version;
