@@ -6,10 +6,8 @@ package com.shri.beerservice.service;
 
 import com.shri.beerservice.model.InventoryDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +43,7 @@ public class InventoryServiceRestTemplateImpl implements InventoryService {
         ResponseEntity<List<InventoryDto>> responseEntity = restTemplate.exchange(inventoryServiceHost + INVENTORY_PATH,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<InventoryDto>>() {
+                new ParameterizedTypeReference<>() {
                 }, beerId);
 
         Integer onHand = Objects.requireNonNull(responseEntity.getBody())
