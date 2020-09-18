@@ -13,3 +13,7 @@ spring:
   h2:
     console:
       enabled: true
+# active mq configuration default username and password
+  artemis:
+    user: artemis
+    password: simetraehcapa
