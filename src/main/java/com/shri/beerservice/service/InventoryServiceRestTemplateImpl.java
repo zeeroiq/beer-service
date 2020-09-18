@@ -23,7 +23,7 @@ import java.util.UUID;
 @Service
 public class InventoryServiceRestTemplateImpl implements InventoryService {
 
-    private final String INVENTORY_PATH = "/api/v1/beer/{beerid}/inventory";
+    private final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
     private final RestTemplate restTemplate;
 
     private String inventoryServiceHost;

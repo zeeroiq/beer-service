@@ -9,6 +9,7 @@ spring:
     jcache:
       config: classpath:ehcache.xml
   datasource:
+    initialization-mode: embedded
     url: jdbc:h2:mem:testdb;MODE=MYSQL
   h2:
     console:
