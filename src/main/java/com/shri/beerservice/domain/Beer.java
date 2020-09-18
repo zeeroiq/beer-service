@@ -44,6 +44,7 @@ public class Beer {
     @Column(unique = true)
     private String upc;
     private BigDecimal price;
+    @Column(name = "quantity_on_hand")
     private Integer minQuantityOnHand;
     private Integer quantityToBrew;
 }
