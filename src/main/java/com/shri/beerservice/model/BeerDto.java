@@ -30,10 +30,10 @@ public class BeerDto implements Serializable {
     @Null
     private Integer version;
     @Null
-    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ss2", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
     private OffsetDateTime createdOn;
     @Null
-    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ss2", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
     private OffsetDateTime lastModifiedOn;
     @NotBlank
     private String beerName;

@@ -6,8 +6,8 @@ package com.shri.beerservice.service.listeners;
 
 import com.shri.beerservice.config.JmsConfig;
 import com.shri.beerservice.domain.Beer;
-import com.shri.beerservice.events.BrewBeerEvent;
-import com.shri.beerservice.events.NewInventoryEvent;
+import com.shri.events.BrewBeerEvent;
+import com.shri.events.NewInventoryEvent;
 import com.shri.beerservice.model.BeerDto;
 import com.shri.beerservice.repository.BeerRepository;
 import lombok.RequiredArgsConstructor;
