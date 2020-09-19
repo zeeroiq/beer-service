@@ -3,8 +3,16 @@ server:
 com:
   zeeroiq:
     inventory-service-host: http://localhost:8081
-# ehcache config properties
+
 spring:
+  application:
+    name: beer-service
+  # Spring Data hangs when not set under Spring Boot 2.3.0
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+  # ehcache config properties
   cache:
     jcache:
       config: classpath:ehcache.xml
@@ -14,10 +22,11 @@ spring:
   h2:
     console:
       enabled: true
-# active mq configuration default username and password
+  # active mq configuration default username and password
   artemis:
     user: artemis
     password: simetraehcapa
+
 
 logging:
   level:

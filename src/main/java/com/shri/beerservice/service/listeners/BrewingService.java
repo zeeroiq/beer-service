@@ -11,7 +11,7 @@ package com.shri.beerservice.service.listeners;
 import com.shri.beerservice.config.JmsConfig;
 import com.shri.beerservice.domain.Beer;
 import com.shri.beerservice.service.InventoryService;
-import com.shri.events.BrewBeerEvent;
+import com.shri.model.events.BrewBeerEvent;
 import com.shri.beerservice.mapper.BeerMapper;
 import com.shri.beerservice.repository.BeerRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,11 +40,11 @@ public class BrewingService {
 
         beers.forEach(beer -> {
             Integer onHand = inventoryService.getInventoryOnHand(beer.getId());
-
-            log.debug(">>>>> Min quantity on hand : " + beer.getMinQuantityOnHand());
+            log.debug(">>>>> Checking Inventory for: " + beer.getBeerName() + " / " + beer.getId());
+            log.debug(">>>>> Min quantity on hand : " + beer.getQuantityOnHand());
             log.debug(">>>>> Inventory is : " + onHand);
 
-            if (beer.getMinQuantityOnHand() >= onHand) {
+            if (beer.getQuantityOnHand() >= onHand) {
                 jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
             }
         });

@@ -1,8 +1,12 @@
 /*
+ * Created by zeeroiq on 9/19/20, 3:15 AM
+ */
+
+/*
  * Created by  ZeeroIQ on 9/15/20, 1:54 AM
  */
 
-package com.shri.beerservice.model;
+package com.shri.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

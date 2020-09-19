@@ -4,9 +4,9 @@
 
 package com.shri.beerservice.service;
 
-import com.shri.beerservice.model.BeerDto;
-import com.shri.beerservice.model.BeerPagedList;
-import com.shri.beerservice.model.enums.BeerStyleEnum;
+import com.shri.model.BeerDto;
+import com.shri.model.BeerPagedList;
+import com.shri.model.enums.BeerStyleEnum;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.UUID;

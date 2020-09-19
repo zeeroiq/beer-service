@@ -5,16 +5,15 @@
 package com.shri.beerservice.bootstrap;
 
 import com.shri.beerservice.domain.Beer;
-import com.shri.beerservice.model.enums.BeerStyleEnum;
 import com.shri.beerservice.repository.BeerRepository;
+import com.shri.model.enums.BeerStyleEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
 @Slf4j
-@Component
+//@Component
 public class BeerLoader implements CommandLineRunner {
     public static final String BEER_1_UPC = "0631234200036";
     public static final String BEER_2_UPC = "0631234300019";
@@ -42,7 +41,7 @@ public class BeerLoader implements CommandLineRunner {
                 .beerName("CORONA")
                 .beerStyle(BeerStyleEnum.ALE)
                 .quantityToBrew(200)
-                .minQuantityOnHand(20)
+                .quantityOnHand(20)
                 .upc(BEER_1_UPC)
                 .price(new BigDecimal("120.00"))
                 .build());
@@ -51,7 +50,7 @@ public class BeerLoader implements CommandLineRunner {
                 .beerName("BIRA")
                 .beerStyle(BeerStyleEnum.LAGER)
                 .quantityToBrew(100)
-                .minQuantityOnHand(25)
+                .quantityOnHand(25)
                 .upc(BEER_2_UPC)
                 .price(new BigDecimal("130.00"))
                 .build());
@@ -60,7 +59,7 @@ public class BeerLoader implements CommandLineRunner {
                 .beerName("TUBORG")
                 .beerStyle(BeerStyleEnum.MALT)
                 .quantityToBrew(10)
-                .minQuantityOnHand(20)
+                .quantityOnHand(20)
                 .upc(BEER_3_UPC)
                 .price(new BigDecimal("190.00"))
                 .build());

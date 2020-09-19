@@ -4,7 +4,7 @@
 
 package com.shri.beerservice.domain;
 
-import com.shri.beerservice.model.enums.BeerStyleEnum;
+import com.shri.model.enums.BeerStyleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -44,7 +44,7 @@ public class Beer {
     @Column(unique = true)
     private String upc;
     private BigDecimal price;
-    @Column(name = "quantity_on_hand")
-    private Integer minQuantityOnHand;
+//    @Column(name = "quantity_on_hand")
+    private Integer quantityOnHand;
     private Integer quantityToBrew;
 }

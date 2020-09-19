@@ -1,7 +1,11 @@
-package com.shri.beerservice.model;
+/*
+ * Created by zeeroiq on 9/19/20, 3:15 AM
+ */
+
+package com.shri.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.shri.beerservice.model.enums.BeerStyleEnum;
+import com.shri.model.enums.BeerStyleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,11 +34,13 @@ public class BeerDto implements Serializable {
     @Null
     private Integer version;
     @Null
-    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime createdOn;
+
     @Null
-    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime lastModifiedOn;
+
     @NotBlank
     private String beerName;
     @NotNull

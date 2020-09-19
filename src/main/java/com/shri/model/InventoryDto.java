@@ -1,8 +1,12 @@
 /*
+ * Created by zeeroiq on 9/19/20, 3:15 AM
+ */
+
+/*
  * Created by  ZeeroIQ on 9/15/20, 3:11 AM
  */
 
-package com.shri.beerservice.model;
+package com.shri.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

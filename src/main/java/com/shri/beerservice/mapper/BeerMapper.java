@@ -5,7 +5,7 @@
 package com.shri.beerservice.mapper;
 
 import com.shri.beerservice.domain.Beer;
-import com.shri.beerservice.model.BeerDto;
+import com.shri.model.BeerDto;
 import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 
