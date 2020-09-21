@@ -1,5 +1,6 @@
 package com.shri.beerservice.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
@@ -13,10 +14,11 @@ public class JmsConfig {
 
     // serialize message content to json using TextMessage
     @Bean
-    public MessageConverter jacksonJmsMessageConverter() {
+    public MessageConverter jacksonJmsMessageConverter(ObjectMapper objectMapper) {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTargetType(MessageType.TEXT);
         messageConverter.setTypeIdPropertyName("_type");
+        messageConverter.setObjectMapper(objectMapper);
         return messageConverter;
     }
 }

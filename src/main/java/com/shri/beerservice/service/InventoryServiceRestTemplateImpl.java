@@ -4,7 +4,7 @@
 
 package com.shri.beerservice.service;
 
-import com.shri.beerservice.model.InventoryDto;
+import com.shri.model.InventoryDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -44,7 +44,7 @@ public class InventoryServiceRestTemplateImpl implements InventoryService {
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {
-                }, beerId);
+                }, (Object)beerId);
 
         Integer onHand = Objects.requireNonNull(responseEntity.getBody())
                 .stream()

@@ -5,8 +5,8 @@
 package com.shri.beerservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shri.beerservice.model.BeerDto;
-import com.shri.beerservice.model.enums.BeerStyleEnum;
+import com.shri.model.BeerDto;
+import com.shri.model.enums.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
