@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD:src/main/java/com/shri/model/BeerPagedList.java
  * Created by zeeroiq on 9/23/20, 12:40 AM
+=======
+ * Created by zeeroiq on 9/19/20, 3:15 AM
+>>>>>>> 6ebe9aa1787ba621fcb6e1f71e75f0d20a751182:src/main/java/com/shri/beerservice/model/BeerPagedList.java
  */
 
 /*

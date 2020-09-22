@@ -44,7 +44,7 @@ public class InventoryServiceRestTemplateImpl implements InventoryService {
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {
-                }, beerId);
+                }, (Object)beerId);
 
         Integer onHand = Objects.requireNonNull(responseEntity.getBody())
                 .stream()

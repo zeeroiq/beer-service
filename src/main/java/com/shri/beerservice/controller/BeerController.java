@@ -4,10 +4,11 @@
 
 package com.shri.beerservice.controller;
 
+
+import com.shri.beerservice.service.BeerService;
 import com.shri.model.BeerDto;
 import com.shri.model.BeerPagedList;
 import com.shri.model.enums.BeerStyleEnum;
-import com.shri.beerservice.service.BeerService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;

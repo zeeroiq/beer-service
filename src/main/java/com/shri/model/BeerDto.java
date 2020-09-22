@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD:src/main/java/com/shri/model/BeerDto.java
  * Created by zeeroiq on 9/23/20, 12:40 AM
+=======
+ * Created by zeeroiq on 9/19/20, 3:15 AM
+>>>>>>> 6ebe9aa1787ba621fcb6e1f71e75f0d20a751182:src/main/java/com/shri/beerservice/model/BeerDto.java
  */
 
 package com.shri.model;
@@ -34,11 +38,13 @@ public class BeerDto implements Serializable {
     @Null
     private Integer version;
     @Null
-    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ss2", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime createdOn;
+
     @Null
-    @JsonFormat(pattern = "yyyy-mm-dd'T'HH:mm:ss2", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime lastModifiedOn;
+
     @NotBlank
     private String beerName;
     @NotNull

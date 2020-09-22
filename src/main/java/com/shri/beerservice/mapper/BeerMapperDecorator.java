@@ -5,8 +5,8 @@
 package com.shri.beerservice.mapper;
 
 import com.shri.beerservice.domain.Beer;
-import com.shri.model.BeerDto;
 import com.shri.beerservice.service.InventoryService;
+import com.shri.model.BeerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
 //@Qualifier("delegate")
