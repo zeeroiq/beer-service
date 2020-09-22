@@ -4,7 +4,7 @@
 
 package com.shri.beerservice.domain;
 
-import com.shri.beerservice.model.enums.BeerStyleEnum;
+import com.shri.model.enums.BeerStyleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

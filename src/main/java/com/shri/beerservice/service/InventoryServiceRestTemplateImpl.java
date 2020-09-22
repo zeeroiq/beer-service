@@ -4,7 +4,7 @@
 
 package com.shri.beerservice.service;
 
-import com.shri.beerservice.model.InventoryDto;
+import com.shri.model.InventoryDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;

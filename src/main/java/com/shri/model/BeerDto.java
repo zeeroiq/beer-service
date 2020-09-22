@@ -1,7 +1,11 @@
-package com.shri.beerservice.model;
+/*
+ * Created by zeeroiq on 9/23/20, 12:40 AM
+ */
+
+package com.shri.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.shri.beerservice.model.enums.BeerStyleEnum;
+import com.shri.model.enums.BeerStyleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

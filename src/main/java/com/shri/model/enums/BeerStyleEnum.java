@@ -1,4 +1,4 @@
-package com.shri.beerservice.model.enums;
+package com.shri.model.enums;
 
 /*******************************************************************************
  * Created by  ZeeroIQ on 9/7/20, 2:07 AM

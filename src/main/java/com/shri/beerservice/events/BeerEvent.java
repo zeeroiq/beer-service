@@ -4,7 +4,7 @@
 
 package com.shri.beerservice.events;
 
-import com.shri.beerservice.model.BeerDto;
+import com.shri.model.BeerDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
