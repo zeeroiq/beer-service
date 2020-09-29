@@ -6,10 +6,10 @@ package com.shri.beerservice.service.listeners;
 
 import com.shri.beerservice.config.JmsConfig;
 import com.shri.beerservice.domain.Beer;
-import com.shri.beerservice.events.NewInventoryEvent;
 import com.shri.beerservice.repository.BeerRepository;
 import com.shri.model.BeerDto;
 import com.shri.model.events.BrewBeerEvent;
+import com.shri.model.events.NewInventoryEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
