@@ -9,6 +9,7 @@ import com.shri.beerservice.service.BeerService;
 import com.shri.model.BeerDto;
 import com.shri.model.BeerPagedList;
 import com.shri.model.enums.BeerStyleEnum;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/")
 public class BeerController {
@@ -28,11 +29,6 @@ public class BeerController {
     private static final Integer DEFAULT_PAGE_SIZE = 25;
 
     private final BeerService beerService;
-
-    public BeerController(BeerService beerService) {
-        this.beerService = beerService;
-    }
-
 
     @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand = false")
     @GetMapping(path = "beer", produces = {"application/json"})

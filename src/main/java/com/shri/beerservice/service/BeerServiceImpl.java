@@ -27,11 +27,6 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
-//    public BeerServiceImpl(BeerRepository beerRepository, BeerMapper beerMapper) {
-//        this.beerRepository = beerRepository;
-//        this.beerMapper = beerMapper;
-//    }
-
     @Override
     public BeerDto getById(UUID id, Boolean showInventoryOnHand) {
         if (showInventoryOnHand) {
