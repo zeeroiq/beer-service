@@ -11,6 +11,7 @@ import com.shri.beerservice.repository.BeerRepository;
 import com.shri.model.BeerDto;
 import com.shri.model.BeerPagedList;
 import com.shri.model.enums.BeerStyleEnum;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -19,16 +20,17 @@ import org.springframework.util.StringUtils;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class BeerServiceImpl implements BeerService {
 
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
-    public BeerServiceImpl(BeerRepository beerRepository, BeerMapper beerMapper) {
-        this.beerRepository = beerRepository;
-        this.beerMapper = beerMapper;
-    }
+//    public BeerServiceImpl(BeerRepository beerRepository, BeerMapper beerMapper) {
+//        this.beerRepository = beerRepository;
+//        this.beerMapper = beerMapper;
+//    }
 
     @Override
     public BeerDto getById(UUID id, Boolean showInventoryOnHand) {

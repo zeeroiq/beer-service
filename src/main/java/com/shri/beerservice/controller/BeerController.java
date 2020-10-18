@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
+//@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/")
 public class BeerController {

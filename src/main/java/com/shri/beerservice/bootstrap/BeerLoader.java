@@ -9,11 +9,12 @@ import com.shri.beerservice.repository.BeerRepository;
 import com.shri.model.enums.BeerStyleEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
 @Slf4j
-//@Component
+@Component
 public class BeerLoader implements CommandLineRunner {
     public static final String BEER_1_UPC = "0631234200036";
     public static final String BEER_2_UPC = "0631234300019";
