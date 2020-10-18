@@ -44,7 +44,7 @@ public class BeerController {
             pageNumber = DEFAULT_PAGE_NUMBER;
         }
         if (pageSize == null || pageSize <= 0) {
-            pageNumber = DEFAULT_PAGE_SIZE;
+            pageSize = DEFAULT_PAGE_SIZE;
         }
         BeerPagedList beerList = beerService.listBeers(beerName, styleEnum, PageRequest.of(pageNumber, pageSize), showInventoryOnHand);
 
