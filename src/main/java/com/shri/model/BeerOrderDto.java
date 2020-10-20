@@ -6,6 +6,7 @@ package com.shri.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,8 +15,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BeerOrderDto extends BaseItem {
+public class BeerOrderDto extends BaseItem implements Serializable {
 
+    private static final long serialVersionUID = -8810162970401171318L;
     private UUID customerId;
     private String customerReference;
     private CustomerDto customerDto;

@@ -10,13 +10,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseItem {
+public class BaseItem implements Serializable {
+
+    private static final long serialVersionUID = -5133364611645524869L;
 
     @JsonProperty("id")
     private UUID id = null;

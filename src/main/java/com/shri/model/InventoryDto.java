@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -24,7 +25,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class InventoryDto {
+public class InventoryDto implements Serializable {
+
+    private static final long serialVersionUID = -1873780700463118242L;
 
     private UUID id;
     private OffsetDateTime createdOn;

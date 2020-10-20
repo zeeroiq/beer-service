@@ -10,6 +10,7 @@ import com.shri.model.BeerDto;
 import com.shri.model.BeerPagedList;
 import com.shri.model.enums.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -21,10 +22,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/")
 public class BeerController {
+
     private static final Integer DEFAULT_PAGE_NUMBER = 0;
     private static final Integer DEFAULT_PAGE_SIZE = 25;
 
@@ -65,6 +68,7 @@ public class BeerController {
     @Cacheable(cacheNames = "beerUpcCache", key = "#upc")
     @GetMapping("beerUpc/{upc}")
     public ResponseEntity<BeerDto> getBeerByUpc(@NotNull @PathVariable("upc") String upc) {
+        log.debug(">>>>> api/v1/beerUpc/" + upc);
         return new ResponseEntity<>(beerService.getByUpc(upc), HttpStatus.OK);
     }
 

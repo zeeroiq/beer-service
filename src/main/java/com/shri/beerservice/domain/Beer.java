@@ -15,6 +15,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -24,7 +25,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Beer {
+public class Beer implements Serializable {
+
+    private static final long serialVersionUID = -1320960094771585288L;
 
     @Id
     @GeneratedValue(generator = "UUID")

@@ -10,6 +10,7 @@ package com.shri.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -18,7 +19,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BeerOrderLineDto extends BaseItem {
+public class BeerOrderLineDto extends BaseItem implements Serializable {
+
+    private static final long serialVersionUID = -8380063249397219414L;
 
     private UUID beerId;
     private String name;
