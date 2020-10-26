@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import java.util.UUID;
 
-@FeignClient(name = "inventory-service")
+@FeignClient(name = "inventory-service", fallback = InventoryServiceFeignClientFailover.class)
 public interface InventoryServiceFeignClient {
 
     @GetMapping(InventoryServiceRestTemplateImpl.INVENTORY_PATH)
