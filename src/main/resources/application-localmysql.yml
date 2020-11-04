@@ -1,4 +1,9 @@
 spring:
+#  disable service discovery
+  cloud:
+    config:
+      discovery:
+        enabled: false
   datasource:
     username: beer_service
     password: password
@@ -26,16 +31,16 @@ spring:
         diaect: org.hibernate.dialect.MySQL8Dialect
 
 # enable logging for config troubleshooting
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        SQL: DEBUG
-#        type:
-#          descriptor:
-#            sql:
-#              BasicBinder: TRACE
-#    com:
-#      zaxxer:
-#        hikari:
-#          HikariConfig: DEBUG
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+    com:
+      zaxxer:
+        hikari:
+          HikariConfig: DEBUG
