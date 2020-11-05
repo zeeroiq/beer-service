@@ -6,6 +6,7 @@ package com.shri.beerservice.service;
 
 import com.shri.model.InventoryDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Profile;
@@ -21,7 +22,7 @@ import java.util.UUID;
 
 @Slf4j
 @Profile("!local-discovery")
-@ConfigurationProperties(prefix = "com.zeeroiq", ignoreUnknownFields = false)
+@ConfigurationProperties(prefix = "com.zeeroiq", ignoreUnknownFields = true)
 @Service
 public class InventoryServiceRestTemplateImpl implements InventoryService {
 
@@ -30,8 +31,12 @@ public class InventoryServiceRestTemplateImpl implements InventoryService {
 
     private String inventoryServiceHost;
 
-    public InventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
+    public InventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder,
+                                            @Value("${com.zeeroiq.inventory-user}") String inventoryUser,
+                                            @Value("${com.zeeroiq.inventory-password}") String inventoryPassword) {
+        this.restTemplate = restTemplateBuilder
+                .basicAuthentication(inventoryUser, inventoryPassword)
+                .build();
     }
 
     public void setInventoryServiceHost(String inventoryServiceHost) {

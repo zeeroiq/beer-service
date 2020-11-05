@@ -3,6 +3,8 @@ server:
 com:
   zeeroiq:
     inventory-service-host: http://localhost:8081
+    inventory-user: zeeroiq
+    inventory-password: password
 
 spring:
   application:
