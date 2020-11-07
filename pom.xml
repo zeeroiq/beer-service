@@ -151,6 +151,20 @@
 <!--                    </excludes>-->
                 </configuration>
             </plugin>
+            <!-- apache clean plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>auto-clean</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -182,7 +196,7 @@
                 <version>0.33.0</version>
                 <configuration>
                     <dockerHost>unix:///var/run/docker.sock</dockerHost>
-<!--                    <dockerHost>http://localhost:8</dockerHost>-->
+<!--                    <dockerHost>http://localhost:8</dockerHost>-->co
                     <verbose> true </verbose>
                     <images>
                         <image>

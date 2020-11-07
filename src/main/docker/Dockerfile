@@ -6,7 +6,7 @@
 # 4. Calls the spring-boot layer tools to extract the layer files
 FROM openjdk:11-jre-slim as builder
 WORKDIR application
-ADD maven/${project.build.fileName}.jar ${project.build.fileName}.jar
+ADD maven/${project.build.finalName}.jar ${project.build.finalName}.jar
 RUN java -Djarmode=layertools -jar ${project.build.fileName}.jar extract
 
 # spring-boot application image
