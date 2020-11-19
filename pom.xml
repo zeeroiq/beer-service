@@ -196,7 +196,7 @@
                 <version>0.33.0</version>
                 <configuration>
                     <dockerHost>unix:///var/run/docker.sock</dockerHost>
-<!--                    <dockerHost>http://localhost:8</dockerHost>-->co
+<!--                    <dockerHost>http://localhost:8</dockerHost>-->
                     <verbose> true </verbose>
                     <images>
                         <image>
