@@ -1,5 +1,12 @@
-version: "3.7"
+version: "3.9"
+
 services:
+  docker-host:
+    image: qoomon/docker-host
+    cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+    restart: on-failure
+    environment:
+      - PORTS=3306
   jms:
     image: vromero/activemq-artemis
     ports:
@@ -41,13 +48,16 @@ services:
       - eureka
       - config
       - jms
+#      - docker-host
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
+      SPRING_CLOUD_CONFIG_URI: http://config:8888
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: 'true'
-      SPRING_PROFILES_ACTIVE: local-discovery, localmysql
+      SPRING_PROFILES_ACTIVE: localmysql,local-discovery
       SPRING_ZIPKIN_BASEURL: http://zipkin
       SPRING_ARTEMIS_HOST: jms
-      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/inventoryservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-host:3306/inventoryservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+#      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/inventoryservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     restart: on-failure
   beer-service:
     image: zeeroiq/beer-service
@@ -58,13 +68,15 @@ services:
       - config
       - jms
       - inventory-service
+#      - docker-host
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: 'true'
-      SPRING_PROFILES_ACTIVE: local-discovery, localmysql
+      SPRING_CLOUD_CONFIG_URI: http://config:8888
+      SPRING_PROFILES_ACTIVE: localmysql,local-discovery
       SPRING_ZIPKIN_BASEURL: http://zipkin
       SPRING_ARTEMIS_HOST: jms
-      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/beerservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-host:3306/beerservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     restart: on-failure
   order-service:
     image: zeeroiq/order-service
@@ -78,10 +90,11 @@ services:
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: 'true'
+      SPRING_CLOUD_CONFIG_URI: http://config:8888
       SPRING_PROFILES_ACTIVE: local-discovery, localmysql
       SPRING_ZIPKIN_BASEURL: http://zipkin
       SPRING_ARTEMIS_HOST: jms
-      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/orderservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker-host:3306/orderservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       COM_ZEERO_BEER-SERVICE-HOST: http://beer-service:8080
     restart: on-failure
   gateway:
